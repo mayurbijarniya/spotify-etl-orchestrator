@@ -1,4 +1,5 @@
 import json
+import os
 import boto3
 import pandas as pd
 from datetime import datetime
@@ -60,12 +61,12 @@ def songs(data):
 def lambda_handler(event, context):
 
     s3 = boto3.client('s3')
-    bucket = 'spotify-ruthletes-project-etl'
+    bucket = os.environ.get('S3_BUCKET_NAME')
     key = 'raw_data/to_processed/'
     spotify_data = []
     spotify_keys = []
 
-    for file in s3.list_objects_v2(Bucket=bucket, Prefix=key)['Contents']:
+    for file in s3.list_objects_v2(Bucket=bucket, Prefix=key).get('Contents', []):
         file_key = file['Key']
         if file_key.endswith('.json'):
             response = s3.get_object(Bucket=bucket, Key=file_key)

@@ -1,6 +1,7 @@
-# Spotify ETL Data Engineering Project
+# Spotify ETL Orchestrator
+**A High-Scale Cloud ETL Pipeline for Music Analytics**
 
-This project implements an end-to-end ETL (Extract, Transform, Load) pipeline for Spotify data from a playlist made by my running group using Python and AWS services.
+This project implements an end-to-end ETL (Extract, Transform, Load) pipeline for Spotify data using a serverless AWS architecture and Snowflake Data Warehouse. It was specifically built to analyze trends within the "Ruthletes" running group's curated playlists.
 
 ## Project Overview
 
@@ -12,10 +13,10 @@ The ETL pipeline performs the following steps:
 
 ## Repository Structure
 
-- `spotify_data.ipynb`: Jupyter Notebook containing initial data extraction from the Spotify API and transformations to change the data from json to dataframes to make it easy to read.
-- `spotify_etl_lambda.py`: Python script designed to be deployed as an AWS Lambda function for automating the ETL process.
-- `sotify_etl_lambda_transform.py`: Python script for transforming the data within the AWS Lambda function.
-- `spotify_snowflake_load.sql`: SQL script executed on snowflake to create integration, build a stage and utlizie snowpipes to load any new files that landed in s3
+- `exploration.ipynb`: Jupyter Notebook containing initial data exploration, API testing, and prototyping of transformation logic.
+- `spotify_extractor.py`: AWS Lambda function that extracts raw data from the Spotify API and stores it in S3.
+- `spotify_transformer.py`: AWS Lambda function that cleans and transforms raw JSON data into structured CSV format.
+- `snowflake_setup.sql`: SQL script to configure Snowflake storage integrations, stages, and Snowpipes for automated data loading.
 
 ## Prerequisites
 
@@ -27,7 +28,7 @@ The ETL pipeline performs the following steps:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/mayurbijarniya/sptoify_etl_de.git
+   git clone https://github.com/mayurbijarniya/spotify-etl-orchestrator.git
    ```
 
 2. **Set environment variables** (example names used by the code):
