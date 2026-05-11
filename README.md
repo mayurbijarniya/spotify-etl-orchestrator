@@ -41,7 +41,7 @@ The ETL pipeline performs the following steps:
    - `S3_BUCKET_NAME`
    - AWS credentials are recommended to be provided via IAM roles for Lambda (avoid embedding keys in code)
 
-![Image of Architecture](https://github.com/mayurbijarniya/spotify-etl-orchestrator/blob/main/Copy%20of%20Spotify%20ETL%20Architecture%20Cloud.png)
+![Image of Architecture](https://github.com/mayurbijarniya/spotify-etl-orchestrator/blob/main/architecture_diagram.png)
 
 ## Scaling to 5GB+ Daily
 While the core demo uses AWS Lambda and Pandas for cost-efficiency, the architecture is designed for enterprise-grade scale:
