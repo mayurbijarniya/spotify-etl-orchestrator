@@ -36,4 +36,4 @@ The ETL pipeline performs the following steps:
    - `SPOTIFY_CLIENT_SECRET`
    - AWS credentials are recommended to be provided via IAM roles for Lambda (avoid embedding keys in code)
 
-![Image of Architecture](https://github.com/mayurbijarniya/sptoify_etl_de/blob/main/Copy%20of%20Spotify%20ETL%20Architecture%20Cloud.png)
+![Image of Architecture](https://github.com/mayurbijarniya/spotify-etl-orchestrator/blob/main/Copy%20of%20Spotify%20ETL%20Architecture%20Cloud.png)
