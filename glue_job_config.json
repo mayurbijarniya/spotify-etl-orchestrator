@@ -1,0 +1,29 @@
+{
+  "Name": "spotify-etl-spark-transform",
+  "Description": "Distributed Spark transformation job for Spotify ETL pipeline. Processes 5GB+ daily playlist data from S3 raw zone into structured albums, artists, and songs tables.",
+  "Role": "arn:aws:iam::<AWS_ACCOUNT_ID>:role/<GLUE_ROLE_NAME>",
+  "ExecutionProperty": {
+    "MaxConcurrentRuns": 3
+  },
+  "Command": {
+    "Name": "glueetl",
+    "ScriptLocation": "s3://<S3_BUCKET_NAME>/scripts/spotify_transformer_spark.py",
+    "PythonVersion": "3"
+  },
+  "DefaultArguments": {
+    "--S3_BUCKET_NAME": "<S3_BUCKET_NAME>",
+    "--job-bookmark-option": "job-bookmark-enable",
+    "--enable-metrics": "true",
+    "--enable-spark-ui": "true",
+    "--spark-event-logs-path": "s3://<S3_BUCKET_NAME>/spark-logs/"
+  },
+  "GlueVersion": "4.0",
+  "NumberOfWorkers": 10,
+  "WorkerType": "G.1X",
+  "Timeout": 60,
+  "Tags": {
+    "Project": "spotify-etl-orchestrator",
+    "Environment": "production",
+    "Team": "data-engineering"
+  }
+}
